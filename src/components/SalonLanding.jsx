@@ -102,9 +102,9 @@ export default function SalonLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
       {/* Floating Action Buttons */}
-      <div className="fixed right-3 md:right-6 bottom-6 z-50 flex flex-col gap-3 md:gap-4">
+      <div className="fixed right-3 md:right-6 bottom-6 z-[9999] flex flex-col gap-3 md:gap-4" style={{ position: 'fixed' }}>
         {/* WhatsApp Button */}
         <motion.a
           href="https://wa.me/918825989718"
