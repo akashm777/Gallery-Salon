@@ -52,14 +52,26 @@
     @apply border-border;
   }
   
-  html, body {
+  html {
     overflow-x: hidden;
+    width: 100%;
     position: relative;
   }
   
   body {
     @apply bg-background text-foreground;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -76,5 +88,21 @@
   
   .gallery-item:hover .gallery-overlay {
     background-color: rgba(184, 134, 11, 0.2);
+  }
+}
+
+/* Critical fix for mobile fixed positioning */
+@media (max-width: 768px) {
+  body, html, #root {
+    transform: none !important;
+    will-change: auto !important;
+  }
+  
+  /* Ensure fixed elements stay fixed on mobile */
+  nav[class*="fixed"],
+  div[class*="fixed"] {
+    position: fixed !important;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
   }
 }

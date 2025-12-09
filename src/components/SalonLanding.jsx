@@ -100,8 +100,8 @@ export default function SalonLanding() {
 
   return (
     <>
-      {/* Floating Action Buttons - Outside main container to avoid transform issues */}
-      <div className="fixed right-3 md:right-6 bottom-6 z-[9999] flex flex-col gap-3 md:gap-4">
+      {/* Floating Action Buttons - Completely isolated from page transforms */}
+      <div className="fixed right-3 md:right-6 bottom-6 flex flex-col gap-3 md:gap-4" style={{ zIndex: 99999, position: 'fixed', isolation: 'isolate' }}>
         {/* WhatsApp Button */}
         <a
           href="https://wa.me/918825989718"
@@ -137,9 +137,9 @@ export default function SalonLanding() {
         </a>
       </div>
 
-      <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-md border-b border-border">
+      <div className="min-h-screen bg-background" style={{ isolation: 'auto', transform: 'none' }}>
+      {/* Navigation - Isolated from page transforms */}
+      <nav className="fixed top-0 left-0 right-0 bg-background backdrop-blur-md border-b border-border" style={{ zIndex: 9998, position: 'fixed', isolation: 'isolate' }}>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
