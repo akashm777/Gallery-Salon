@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: #FFFBF5;
+    --foreground: #2C2013;
+    --card: #FFFFFF;
+    --card-foreground: #2C2013;
+    --popover: #FFFFFF;
+    --popover-foreground: #2C2013;
+    --primary: #B8860B;
+    --primary-foreground: #FFFBF5;
+    --secondary: #D4AF37;
+    --secondary-foreground: #2C2013;
+    --muted: #FAF3E8;
+    --muted-foreground: #6B5D4F;
+    --accent: #C9A961;
+    --accent-foreground: #2C2013;
+    --destructive: #DC2626;
+    --border: #E5D5C1;
+    --input: #E5D5C1;
+    --ring: #D4AF37;
+  }
+
+  .dark {
+    --background: #1A1410;
+    --foreground: #F5E6D3;
+    --card: #2C2013;
+    --card-foreground: #F5E6D3;
+    --popover: #2C2013;
+    --popover-foreground: #F5E6D3;
+    --primary: #D4AF37;
+    --primary-foreground: #1A1410;
+    --secondary: #8B7355;
+    --secondary-foreground: #F5E6D3;
+    --muted: #3D3125;
+    --muted-foreground: #A0826D;
+    --accent: #B8860B;
+    --accent-foreground: #F5E6D3;
+    --destructive: #EF4444;
+    --border: #3D3125;
+    --input: #3D3125;
+    --ring: #C9A961;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  .gallery-overlay {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+  
+  .gallery-item:hover .gallery-overlay {
+    background-color: rgba(184, 134, 11, 0.2);
+  }
+}
