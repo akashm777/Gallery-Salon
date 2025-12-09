@@ -10,9 +10,6 @@ import logo from '@/assets/logo.png'
 
 export default function SalonLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -142,39 +139,28 @@ export default function SalonLanding() {
 
       <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-md border-b border-border"
-      >
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background backdrop-blur-md border-b border-border">
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center"
-            >
+            <div className="flex items-center">
               <img 
                 src={logo} 
                 alt="Gallery Unisex Salon" 
                 className="h-12 md:h-16 w-auto object-contain"
               />
-            </motion.div>
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {['Home', 'Services', 'Gallery', 'About', 'Contact Us'].map((item, index) => (
-                <motion.button
+              {['Home', 'Services', 'Gallery', 'About', 'Contact Us'].map((item) => (
+                <button
                   key={item}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + index * 0.1 }}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className="text-foreground hover:text-primary transition-colors font-medium"
                 >
                   {item}
-                </motion.button>
+                </button>
               ))}
             </div>
 
@@ -190,12 +176,8 @@ export default function SalonLanding() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-t border-border"
-          >
+          <div className="md:hidden bg-background border-t border-border">
+
             <div className="px-4 py-6 space-y-4">
               {['Home', 'Services', 'Gallery', 'About', 'Contact Us'].map((item) => (
                 <button
@@ -207,23 +189,20 @@ export default function SalonLanding() {
                 </button>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </motion.nav>
+      </nav>
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        <motion.div
-          style={{ opacity, scale }}
-          className="absolute inset-0 z-0"
-        >
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/60 to-background z-10" />
           <img
             src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80"
             alt="Salon Interior"
             className="w-full h-full object-cover"
           />
-        </motion.div>
+        </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
